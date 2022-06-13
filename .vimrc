@@ -19,7 +19,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'https://github.com/mattn/emmet-vim'
 " Writing wrapping and more 
 	Plug 'https://github.com/preservim/vim-pencil'
-"Status bar theme
+"Status Bar
 	Plug 'https://github.com/vim-airline/vim-airline'
 "VIM wiki
 	Plug 'https://github.com/vimwiki/vimwiki'
@@ -40,12 +40,14 @@ call plug#begin('~/.vim/plugged')
 	Plug 'https://github.com/ryanoasis/vim-devicons'
 	Plug 'https://github.com/tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
-
 " ============================================================
 "  Visuals
 " ============================================================
+"Gruvbox Color Settings
+	let g:gruvbox_contrast_dark = 'hard'
 "Color scheme
-	colorscheme gruvbox 
+	colorscheme gruvbox
+	hi Normal guibg=NONE ctermbg=NONE
 "Limelight color
 	let g:limelight_conceal_ctermfg = 'gray'
 	let g:limelight_conceal_ctermfg = 240
@@ -53,7 +55,7 @@ call plug#end()
 "  General Configs
 " ============================================================
 "Set Leader Key
-	let mapleader = "."
+	let mapleader = " "
 "Enable line numbers
 	set number
 "Relative line nagivation
@@ -87,14 +89,22 @@ call plug#end()
 "Copy and Paste
 	vnoremap <C-c> "+y 
 	map <C-a> ggVG"+y
-"Cursor shape
+"Cursor Shape
 	let &t_SI = "\e[6 q"
 	let &t_EI = "\e[2 q"
-"Cursor highlight
-	set cursorcolumn
-	set cursorline 
+"Cursor Highlight
+"	set cursorcolumn
+"	set cursorline 
 "Spellchecking
 	set spell spelllang=en_us
+"Vimwiki Diary Config
+	let g:vimwiki_list = [{'auto_diary_index': 1}]
+	let g:vimwiki_diary_months = {
+		\ 1: 'Enero', 2: 'Febrero', 3: 'Marzo',
+		\ 4: 'Abril', 5: 'Mayo', 6: 'Junio',
+		\ 7: 'Julio', 8: 'Agosto', 9: 'Septiembre',
+		\ 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'
+		\ }
 " ============================================================
 " Goyo Plugin Configs
 " ============================================================
@@ -163,4 +173,3 @@ endif
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
